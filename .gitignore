@@ -6,4 +6,5 @@ public/stylesheets/*.css
 .rvmrc
 public/assets
 .sass-cache/
+.byebug_history
 *.swp
