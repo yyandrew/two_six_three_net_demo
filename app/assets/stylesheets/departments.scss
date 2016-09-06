@@ -1,12 +1,18 @@
 // Place all the styles related to the departments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-a:visited {
+.btn a:visited {
   color: white !important;
+}
+body {
+  .container.departments, .container.employees { padding-top: 40px; }
 }
 .table {
   &.departments {
     .new-department {
     }
   }
+}
+form .actions {
+  .create { margin: 8px 0; }
 }

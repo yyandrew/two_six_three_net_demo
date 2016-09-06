@@ -9,9 +9,9 @@
           %li= message
   .field
     = f.label :name
-    = f.text_field :name
+    = f.text_field :name, class: "form-control"
   .field
     = f.label :description
-    = f.text_area :description
+    = f.text_area :description, class: "form-control"
   .actions
-    = f.submit
+    = button_tag 'Create Department', class: "btn btn-primary create", type: "submit"
