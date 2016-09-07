@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Employee, type: :model do
   before :all do
-    @employee = FactoryGirl.build(:employee)
+    @employee = FactoryGirl.create(:employee)
   end
 
   it 'name should not be nil' do
@@ -41,7 +41,7 @@ RSpec.describe Employee, type: :model do
       ]
     end
     it 'should return departments information' do
-      @employee.departments << @departments
+      @employee.departments = @departments
       @employee.save
       @employee.reload
       expect(@employee.json["departments"]).to eq([{"name"=>"Tech1"}, {"name"=>"Tech2"}])

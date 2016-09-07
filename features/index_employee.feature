@@ -1,6 +1,6 @@
 Feature: employees page
   Scenario: Viewing employees index page
-    Given there is a employee named "andrew" with "1" role, "29" age, "1" gender, "12345678901" phone and "shanghai" address
+    Given there is a employee named "andrew" with "staff" role, "29" age, "male" gender, "12345678901" phone and "shanghai" address
     When I am on the employees index page
     Then I should see the "andrew" employee
     And I should see the "Departments" and "Employees" menus on employees index page

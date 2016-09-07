@@ -1,8 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe "employees/edit", type: :view do
-  before(:each) do
-    @employee = assign(:employee, FactoryGirl.create(:employee))
+  before(:all) do
+    @employee = assign(:employee, FactoryGirl.create(:employee, {name: Faker::Name.name}))
+  end
+
+  after(:all) do
+    @employee.destroy
   end
 
   it "renders the edit employee form" do

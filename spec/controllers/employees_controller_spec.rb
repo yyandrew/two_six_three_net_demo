@@ -5,22 +5,24 @@ RSpec.describe EmployeesController, type: :controller do
   let(:valid_attributes) {
     {
       name: Faker::Commerce.name,
-      role: 1,
+      role: 'staff',
       age: 29,
-      gender: 1,
+      gender: 'male',
       phone: Faker::PhoneNumber.cell_phone,
-      address: Faker::Address.street_address
+      address: Faker::Address.street_address,
+      departments: []
     }
   }
 
   let(:invalid_attributes) {
     {
       name: nil,
-      role: 1,
+      role: 'staff',
       age: 29,
-      gender: 1,
+      gender: 'male',
       phone: Faker::PhoneNumber.cell_phone,
-      address: Faker::Address.street_address
+      address: Faker::Address.street_address,
+      departments: []
     }
   }
 
