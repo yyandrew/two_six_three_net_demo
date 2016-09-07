@@ -5,11 +5,19 @@ class EmployeesController < ApplicationController
   # GET /employees.json
   def index
     @employees = Employee.all
+    respond_to do |format|
+      format.html
+      format.json { render json: @employees.map(&:json) }
+    end
   end
 
   # GET /employees/1
   # GET /employees/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.json { render json: @employee.json }
+    end
   end
 
   # GET /employees/new
@@ -24,10 +32,12 @@ class EmployeesController < ApplicationController
   # POST /employees
   # POST /employees.json
   def create
-    @employee = Employee.new(employee_params)
+    department_ids = employee_params.delete("departments")
+    @employee = Employee.new(employee_params.except(:departments))
 
     respond_to do |format|
       if @employee.save
+        @employee.departments = Department.where(id: department_ids)
         format.html { redirect_to @employee, notice: 'Employee was successfully created.' }
         format.json { render :show, status: :created, location: @employee }
       else
@@ -41,7 +51,9 @@ class EmployeesController < ApplicationController
   # PATCH/PUT /employees/1.json
   def update
     respond_to do |format|
-      if @employee.update(employee_params)
+      department_ids = employee_params.delete("departments")
+      if @employee.update(employee_params.except(:departments))
+        @employee.departments = Department.where(id: department_ids)
         format.html { redirect_to @employee, notice: 'Employee was successfully updated.' }
         format.json { render :show, status: :ok, location: @employee }
       else
@@ -69,6 +81,6 @@ class EmployeesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def employee_params
-      params.require(:employee).permit(:name, :role, :age, :gender, :phone, :address)
+      params.require(:employee).permit(:name, :role, :age, :gender, :phone, :address, :departments => [])
     end
 end

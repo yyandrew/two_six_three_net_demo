@@ -11,18 +11,23 @@
     = f.text_field :name, class: "form-control"
   .field
     = f.label :role
-    = f.number_field :role, class: "form-control"
+    = f.select :role, options_for_select(Employee.roles.keys), class: "form-control"
   .field
     = f.label :age
     = f.number_field :age, class: "form-control"
   .field
     = f.label :gender
-    = f.number_field :gender, class: "form-control"
+    = f.select :gender, options_for_select(Employee.genders.keys), class: "form-control"
   .field
     = f.label :phone
     = f.text_field :phone, class: "form-control"
   .field
     = f.label :address
     = f.text_area :address, class: "form-control"
+  .field
+    = f.label :department
+    - Department.all.each do |dep|
+      = check_box_tag "employee[departments][]", dep.id, @employee.departments.find_by_id(dep.id).present?
+      %span= dep.name
   .actions
     = button_tag 'Save', class: "btn btn-primary create", type: "submit"

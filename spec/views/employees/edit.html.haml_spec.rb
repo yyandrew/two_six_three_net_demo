@@ -12,11 +12,11 @@ RSpec.describe "employees/edit", type: :view do
 
       assert_select "input#employee_name[name=?]", "employee[name]"
 
-      assert_select "input#employee_role[name=?]", "employee[role]"
+      assert_select "select#employee_role[name=?]", "employee[role]"
 
       assert_select "input#employee_age[name=?]", "employee[age]"
 
-      assert_select "input#employee_gender[name=?]", "employee[gender]"
+      assert_select "select#employee_gender[name=?]", "employee[gender]"
 
       assert_select "input#employee_phone[name=?]", "employee[phone]"
 

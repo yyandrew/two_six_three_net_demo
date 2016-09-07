@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "employees/new", type: :view do
   before(:each) do
-    assign(:employee, FactoryGirl.create(:employee))
+    assign(:employee, FactoryGirl.build(:employee))
   end
 
   it "renders new employee form" do
@@ -12,11 +12,11 @@ RSpec.describe "employees/new", type: :view do
 
       assert_select "input#employee_name[name=?]", "employee[name]"
 
-      assert_select "input#employee_role[name=?]", "employee[role]"
+      assert_select "select#employee_role[name=?]", "employee[role]"
 
       assert_select "input#employee_age[name=?]", "employee[age]"
 
-      assert_select "input#employee_gender[name=?]", "employee[gender]"
+      assert_select "select#employee_gender[name=?]", "employee[gender]"
 
       assert_select "input#employee_phone[name=?]", "employee[phone]"
 

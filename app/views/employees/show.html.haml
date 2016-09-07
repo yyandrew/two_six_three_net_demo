@@ -18,7 +18,7 @@
 %p
   %b Address:
   = @employee.address
-
-= link_to 'Edit', edit_employee_path(@employee)
-\|
-= link_to 'Back', employees_path
+%p
+  %b Department:
+  - @employee.departments.each do |dep|
+    %span.label.label-primary= dep.name

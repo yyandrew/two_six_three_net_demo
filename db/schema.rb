@@ -29,13 +29,13 @@ ActiveRecord::Schema.define(version: 20160906113205) do
 
   create_table "employees", force: :cascade do |t|
     t.string   "name"
-    t.integer  "role"
+    t.integer  "role",       default: 1
     t.integer  "age"
-    t.integer  "gender"
+    t.integer  "gender",     default: 1
     t.string   "phone"
     t.text     "address"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
 end
