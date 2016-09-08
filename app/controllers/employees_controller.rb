@@ -4,7 +4,7 @@ class EmployeesController < ApplicationController
   # GET /employees
   # GET /employees.json
   def index
-    @employees = Employee.all
+    @employees = Employee.all.includes(:departments)
     respond_to do |format|
       format.html
       format.json { render json: @employees.map(&:json) }
